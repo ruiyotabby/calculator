@@ -8,6 +8,7 @@
 body{
     display: flex;
     justify-content: center;
+    background-color:darkslategray;
 }
 
 .display{
@@ -17,6 +18,8 @@ body{
     font-size: 6em;
     text-align: end;
     font-weight: 700;
+    text-overflow:clip;
+    overflow: hidden;
 }
 
 button{
