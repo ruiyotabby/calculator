@@ -1,0 +1,43 @@
+.container{
+    border: 5px solid rgb(56, 56, 56);
+    width: 22em;
+    height: 36em;
+    background-color: rgb(212, 211, 211);
+}
+
+body{
+    display: flex;
+    justify-content: center;
+}
+
+.display{
+    background-color: gray;
+    height: 20%;
+    border: 5px solid black;
+    font-size: 6em;
+    text-align: end;
+    font-weight: 700;
+}
+
+button{
+    height: 3.5em;
+    width: 3.5em;
+    border-radius: 0.4em;
+    margin: 0.2em;
+    color: white;
+    background-color: rgb(41, 40, 40);
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.buttons{
+    margin-top: 0.6em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.1em;
+    justify-content: center;
+}
+
+.operator{
+    background-color: gray;
+}
