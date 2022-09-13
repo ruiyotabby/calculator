@@ -25,10 +25,19 @@ let operate = () => {
     switch (sign) {
         case '+':
             return add();
+        case '*':
+            return multiply()
         default:
             console.log('default');
             break;
     }
+}
+
+let multiply = () => {
+    let product = num1 * num2;
+    num2 = ''; sign = '';
+    num1 = product;
+    return display.textContent = product;
 }
 
 let add = () => {
