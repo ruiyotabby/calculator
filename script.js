@@ -12,18 +12,34 @@ for(let b of btn){
         display.textContent += e.target.textContent;
 
         if(sign == '') {
-            num1 = getFirst(num1, e);
+            num1 = getInput(num1, e);
         } else {
-            num2 = getFirst(num2, e);
+            num2 = getInput(num2, e);
         }
         
+        if(num2 != '') operate()
     })
 }
 
+let operate = () => {
+    switch (sign) {
+        case '+':
+            return add();
+        default:
+            console.log('default');
+            break;
+    }
+}
 
+let add = () => {
+    let total = parseInt(num1) + parseInt(num2);
+    num2 = '';
+    sign = '';
+    num1 = total;
+    return display.textContent = total;
+}
 
 let getInput = (num, event) => {
-    
     for(let p of operand){
         while(event.target == p){
             num += event.target.textContent;
@@ -40,13 +56,3 @@ let getInput = (num, event) => {
     }
     return num;
 }
-
-// let getSecond = (event) => {
-//     for(let p of operand){
-//         while(event.target == p){
-//             num2 += event.target.textContent;
-//             console.log('sdd');
-//             break;
-//         }
-//     }
-// }
