@@ -12,7 +12,7 @@ document.querySelector('.equals').addEventListener('click', operate);
 for(let p of operands){
     p.addEventListener('click', (e) => {
         display1.textContent += e.target.textContent;
-        if(sign == '') {
+        if(num1 == '') {
             num1 = getNum(num1, e);
         } else {
             num2 = getNum(num2, e);
@@ -29,6 +29,14 @@ for(let o of operators){
 
 
 function operate() {
+    if(sign.length > 1) {
+        sign = sign.slice(sign.length-1);
+    }
+    if(sign == '') return num2 == '' ? display2.textContent = num1 : num2;
+    if(num1 == '' ) {
+        display1.textContent = 'Please try again';
+        return display2.textContent = 'Error';
+    }
     switch (sign) {
         case '+':
             return add();
@@ -39,25 +47,24 @@ function operate() {
         case '-':
             return subtract();
         default:
-        //     return display2.textContent = 'error';
-
+            return console.log('something bad happened');
     }
 }
 
 function multiply () {
-    let product = parseInt(num1) * parseInt(num2);
+    let product = parseFloat(num1) * parseFloat(num2);
     num2 = ''; 
     sign = '';
     num1 = product;
-    display2.textContent = product;
+    display2.textContent = Math.round(product * 100) / 100;
 }
 
 function add() {
-    let sum = parseInt(num1) + parseInt(num2);
+    let sum = parseFloat(num1) + parseFloat(num2);
     num2 = '';
     num1 = sum;
     sign = ''
-    display2.textContent = sum;
+    display2.textContent = Math.round(sum * 100) / 100;
 }
 
 function divide(){
@@ -66,20 +73,19 @@ function divide(){
         display1.textContent = 'can\'t divide by 0';
         return -1;
     }
-    
-    let total =  parseInt(num1) / parseInt(num2);
+    let total =  parseFloat(num1) / parseFloat(num2);
     num2 = '';
     num1 = total;
     sign = ''
-    display2.textContent = total;
+    display2.textContent = Math.round(total * 100) / 100;
 }
 
 function subtract () {
-    let remainder = parseInt(num1) - parseInt(num2);
+    let remainder = parseFloat(num1) - parseFloat(num2);
     num2 = '';
     sign = '';
-    num2 = remainder;
-    display2.textContent = remainder;
+    num1 = remainder;
+    display2.textContent = Math.round(remainder * 100) / 100;
 }
 
 let getNum = (num, event) => {
@@ -88,6 +94,7 @@ let getNum = (num, event) => {
 }
 
 let getSign = (event) => {
+    if(num1 == '') sign = '';
     if(num2 != '' && sign != '') operate();
     sign += event.target.textContent;
 }
@@ -98,4 +105,12 @@ clear.addEventListener('click', () => {
     sign = ''; num1 = '', num2 = '';
     display1.textContent = '';
     display2.textContent = 0;
+})
+
+document.querySelector('.percent').addEventListener('click', () => {
+    display1.textContent += percent.textContent;
+    if(num2 == '') {
+        return num1 = num1/100;
+    }
+    return num2 = num2/100;
 })
