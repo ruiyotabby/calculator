@@ -1,8 +1,5 @@
-let btn = document.querySelectorAll('button');
-let display = document.querySelector('.display');
 let operands = document.getElementsByClassName('operand');
 let operators = document.getElementsByClassName('operator');
-let special = document.querySelectorAll('.special');
 let display1 = document.querySelector('.display1');
 let display2 = document.querySelector('.display2');
 
@@ -16,9 +13,9 @@ for(let p of operands){
     p.addEventListener('click', (e) => {
         display1.textContent += e.target.textContent;
         if(sign == '') {
-            num1 = getnum(num1, e);
+            num1 = getNum(num1, e);
         } else {
-            num2 = getnum(num2, e);
+            num2 = getNum(num2, e);
         }    
     })
 }
@@ -43,10 +40,9 @@ function operate() {
             return subtract();
         default:
         //     return display2.textContent = 'error';
-        
+
     }
 }
-
 
 function multiply () {
     let product = parseInt(num1) * parseInt(num2);
@@ -86,7 +82,7 @@ function subtract () {
     display2.textContent = remainder;
 }
 
-let getnum = (num, event) => {
+let getNum = (num, event) => {
     num += event.target.textContent;
     return num;
 }
@@ -95,3 +91,11 @@ let getSign = (event) => {
     if(num2 != '' && sign != '') operate();
     sign += event.target.textContent;
 }
+
+let clear = document.querySelector('.clear');
+
+clear.addEventListener('click', () => {
+    sign = ''; num1 = '', num2 = '';
+    display1.textContent = '';
+    display2.textContent = 0;
+})
