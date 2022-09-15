@@ -4,16 +4,17 @@
 }
 
 .container{
-    border: 5px solid rgb(56, 56, 56);
-    width: 22em;
+    border: .5em solid rgb(56, 56, 56);
+    width: 25em;
     height: 36em;
-    background-color: rgb(212, 211, 211);
+    background-color: seashell;
+    border-radius: .6em;
 }
 
 body{
     display: flex;
     justify-content: center;
-    background-color:darkslategray;
+    background-color:white;
 }
 
 .display{
@@ -29,7 +30,7 @@ body{
 
 button{
     height: 3.5em;
-    width: 3.5em;
+    width: 3.9em;
     border-radius: 0.4em;
     margin: 0.2em;
     color: white;
@@ -43,18 +44,14 @@ button{
     display: flex;
     flex-wrap: wrap;
     gap: 0.1em;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .operator{
     background-color: gray;
 }
 
-.operator:focus{
-    background-color:rgb(93, 91, 91) ;
-}
-
-.equals:active, .operand:active{
+.equals:active, .operand:active, .operator:active{
     background-color: rgb(91, 91, 91);
 }
 
@@ -80,5 +77,6 @@ button{
 }
 
 .equals{
-    width: 7.6em;
+    width: 8.4em;
+    background-color: gray;
 }
