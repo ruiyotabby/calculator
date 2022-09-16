@@ -26,6 +26,8 @@ body{
     text-align: end;
     text-overflow:clip;
     overflow: hidden;
+    margin: .07em;
+    border-radius: .06em;
 }
 
 button{
