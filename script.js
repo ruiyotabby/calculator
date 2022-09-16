@@ -12,7 +12,7 @@ document.querySelector('.equals').addEventListener('click', operate);
 for(let p of operands){
     p.addEventListener('click', (e) => {
         display1.textContent += e.target.textContent;
-        if(num1 == '') {
+        if(sign == '') {
             num1 = getNum(num1, e);
         } else {
             num2 = getNum(num2, e);
@@ -37,10 +37,12 @@ function operate() {
         display1.textContent = 'Please try again';
         return display2.textContent = 'Error';
     }
-    switch (sign) {
+    switch (sign.toLowerCase()) {
         case '+':
             return add();
         case 'x':
+            return multiply();
+        case '*':
             return multiply();
         case '/':
             return divide();
@@ -96,7 +98,7 @@ let getNum = (num, event) => {
 let getSign = (event) => {
     if(num1 == '') sign = '';
     if(num2 != '' && sign != '') operate();
-    sign += event.target.textContent;
+    return sign += event.target.textContent;
 }
 
 let clear = document.querySelector('.clear');
@@ -113,4 +115,23 @@ document.querySelector('.percent').addEventListener('click', () => {
         return num1 = num1/100;
     }
     return num2 = num2/100;
+})
+
+window.addEventListener('keydown', event => {
+    if(event.key == '1' || event.key == '2' || event.key == '3' || event.key == '4' || event.key == '5' || event.key == '6' || event.key == '7' || event.key == '8' || event.key == '9' || event.key == '0' || event.key == '.'){
+        if(sign == '') {
+            display1.textContent += event.key;
+            return num1 += event.key
+        };
+        if(sign != '') {
+            display1.textContent += event.key;
+            return num2 += event.key;
+        }
+    }
+    else if(event.key == '+' || event.key == '-' || event.key == '*' || event.key == '/'){
+        if(num1 == '') sign = '';
+        if(num2 != '' && sign != '') operate();
+        display1.textContent += event.key;
+        return sign += event.key;
+    } else if(event.key == '=') return operate();
 })
