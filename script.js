@@ -109,8 +109,8 @@ clear.addEventListener('click', () => {
     display2.textContent = 0;
 })
 
-document.querySelector('.percent').addEventListener('click', () => {
-    display1.textContent += percent.textContent;
+document.querySelector('.percent').addEventListener('click', (event) => {
+    display1.textContent += event.target.textContent;
     if(num2 == '') {
         return num1 = num1/100;
     }
